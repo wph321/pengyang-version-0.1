@@ -1,0 +1,123 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>User Register</title>
+<!-- meta data -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Register Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+		
+		
+<!-- //meta data -->
+<link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700&amp;subset=cyrillic,latin-ext,vietnamese" rel="stylesheet">
+<!-- css files -->
+<link href="css/regist-style.css" type="text/css" rel="stylesheet" media="all">   
+<!-- //css files -->
+<script type="text/javascript">
+
+window.onload=function(){ 
+
+	$.ajax({
+		  type: 'POST',
+		  url: "login/findsh.do",
+		  data: null,
+		  success: function(data){
+			  alert(data);
+		  },
+		  dataType: "html"
+		});
+	
+	　　$("#superhospital").hide();
+	　　}; 
+	 
+	function showsh(){
+		$("#superhospital").show();
+	};
+
+	function hidesh(){
+		$("#superhospital").hide();
+	};
+
+</script>
+</head>
+<!-- body starts -->
+<body>
+<!-- section -->
+<section class="register">
+	<div class="register-full">
+		<div class="register-left">
+			<div class="register-in">
+				<h1>Modern Register Form</h1>
+				<p>Donec ipsum lorem, sodales a sagittis ut, convallis non nibh. Integer vitae cursus nunc, et vestibulum augue. Donec lacinia tristique purus. Aenean in est pretium lectus euismod facilisis.</p>
+				<p>Donec ipsum lorem, sodales a sagittis ut, convallis non nibh. Integer vitae cursus nunc, et vestibulum augue. Donec lacinia tristique purus. Aenean in est pretium lectus euismod facilisis.</p>
+				<div class="link">
+					<a href="login.jsp">已有账号，点击此处登陆</a>
+				</div>
+			</div>
+		</div>
+		<div id="register-right" class="register-right">
+			<div class="register-in">
+				<h2>注 册</h2>
+				<div class="register-form">
+					<form action="#" method="post">
+						<div class="fields-grid">
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="name" required=""> 
+								<label>真实姓名<span style="color: red">  *</span></label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="username" required=""> 
+								<label>用户名<span style="color: red">  *</span></label>
+								<span></span>
+							</div> 
+							<div class="styled-input">
+								<input type="password" name="password" required="">
+								<label>密码<span style="color: red">  *</span></label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="password" name="password" required="">
+								<label> 再次输入密码<span style="color: red">  *</span></label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="hospital" required="">
+								<label>本医院名<span style="color: red">  *</span></label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+							<span style="color: red">  *</span>
+								<input type="radio" name="hospital_sign" onchange="showsh()" required="" value="0" />上级医院
+								<input type="radio" name="hospital_sign" onchange="hidesh()" required="" value="1" />下级医院
+								<span></span>
+							</div>
+							<div class="styled-input" id="superhospital" style="display: none;">
+								<input type="text" name="superiorhospital" required="">
+								<label>上级医院名<span style="color: red">  *</scan></label>
+								<span></span>
+							</div>
+							
+							<div class="clear"> </div>
+							 <label class="checkbox"><input type="checkbox" name="checkbox" checked><i></i>I agree to the <a href="#">Terms and Conditions</a></label>
+						</div>
+						<input type="submit" value="Register">
+					</form>
+				</div>
+			</div>
+			<div class="clear"> </div>
+		</div>
+	<div class="clear"> </div>
+	</div>
+	<!-- copyright -->
+	<p class="agile-copyright">© 2017 Modern Register Form. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts</a></p>
+	<!-- //copyright -->
+</section>
+<!-- //section -->
+</body>	
+<!-- //body ends -->
+</html>

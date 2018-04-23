@@ -1,0 +1,7 @@
+version 1.2-described
+1、修改显示方式为jpg后，显示速度缓慢，修改pdf文件显示
+2、tomcat7后对get请求方式编码检查严格，embed标签中的src地址无法传输到PatientController控制器
+3、尝试使用encodeURL(),编码，未果，
+4、pdf仍未能实现显示，（地址编码不服符合tomcat协议规范无法识别）
+5、搭建基本页面模型所以将此项目导出以备日后完善。
+6、基本页面模型第一次版本 version 0.0.1;

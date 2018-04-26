@@ -16,6 +16,10 @@
    	<select id="findAll" resultType="com.modle.Superiorhospital">
    		select <include refid="cols" /> from superiorhospital;
    	</select>
+
+   	<select id="findByPid" parameterType="int" resultType="com.modle.Superiorhospital">
+   		select <include refid="cols" /> from superiorhospital where pro_id=#{id};
+   	</select>
     
    	<select id="findId" parameterType="String" resultType="int">
    		select id from superiorhospital where name=#{name};

@@ -19,5 +19,7 @@ public interface Superiorhospital_Dao {
 	
 	public int findId(String name);
 	
+	public List<Superiorhospital> findByPid(int id);
+	
 	public int count(String name);
 }

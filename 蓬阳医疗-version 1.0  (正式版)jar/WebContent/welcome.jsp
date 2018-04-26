@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,5 +25,21 @@
 　　蓬阳医疗已经与“GE医疗、超思电子、星脉医疗、泰医网、壹贰壹健康、育阳医疗“达成战略合作协议，共同开展相关产品的研发及商业模式的推广工作！        
 　　蓬阳医疗将进一步整合资本和技术资源，开展“精准医疗、智慧医疗、物联医疗、数字医疗”相关产品的研发及推广工作，为推动中国医疗技术的创新及诊疗水平的提升而努力奋斗！
 	</p>
+	
+	<br/><br/>
+	
+	<div align="center">
+	<h1 style="color: red;">注册信息</h1>
+		&nbsp;&nbsp;&nbsp;&nbsp;姓名: ${sessionScope.regist_message.name}<br/><br/><br/>
+		&nbsp;&nbsp;用户名: ${sessionScope.regist_message.username}<br/><br/><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;密码: ${sessionScope.regist_message.password}<br/><br/><br/>
+		所属医院: ${sessionScope.regist_message.hospital}<br/><br/><br/>
+		<c:if test="${sessionScope.regist_message.hospital_sign == 1}">  
+			上级医院: ${sessionScope.regist_message.superiorhospital}
+        </c:if>
+	</div>
+	
+	
+	
 </body>
 </html>

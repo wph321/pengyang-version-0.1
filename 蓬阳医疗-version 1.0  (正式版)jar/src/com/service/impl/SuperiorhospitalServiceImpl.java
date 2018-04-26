@@ -63,4 +63,13 @@ public class SuperiorhospitalServiceImpl implements SuperiorHospitalService {
 		return shd.count(name);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.pengyang.service.SuperiorHospitalService#findByPid()
+	 */
+	@Override
+	public List<Superiorhospital> findByPid(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return shd.findByPid(id);
+	}
+
 }

@@ -20,7 +20,7 @@
     </select>
     
     <select id="findCount" parameterType="String" resultType="int">
-    	select count(*) from userlogin where username=#{userName};  
+    	select count(*) from userlogin where username=#{username};  
     </select>
     
     <insert id="add" parameterType="com.modle.UserLogin">

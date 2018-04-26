@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crud.dao.province_Dao">
+    <sql id="cols">
+         id,name
+    </sql>
+    
+    <resultMap type="com.modle.Provinces" id="province">
+    	<result property="id" column="id"/>
+    	<result property="name" column="name"/>
+    </resultMap>
+    
+    <select id="findAll" resultMap="province">
+    	select <include refid="cols" /> from provinces;
+    </select>
+    
+    <select id="findOne" parameterType="String" resultType="com.modle.Provinces">
+    	select <include refid="cols" /> from province where name=#{name};
+    </select>
+    
+    <insert id="add" parameterType="com.modle.Provinces">
+    	insert into province values(#{id},#{name});
+    </insert>
+    
+    <update id="update" parameterType="com.modle.Provinces">
+    	update province set name=#{name}, where id=#{id};
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	delete from privince where id=#{id};
+    </delete>
+    
+</mapper>

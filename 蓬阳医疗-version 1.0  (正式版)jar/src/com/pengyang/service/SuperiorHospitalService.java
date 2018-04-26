@@ -17,6 +17,8 @@ public interface SuperiorHospitalService {
 	
 	public List<Superiorhospital> findAll() throws Exception;
 	
+	public List<Superiorhospital> findByPid(int id) throws Exception;
+	
 	public int findId(String name) throws Exception;
 	
 	public int count(String name) throws Exception;

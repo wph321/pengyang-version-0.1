@@ -51,6 +51,13 @@ BORDER-RIGHT: #eee 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #eee 1px solid;
  BORDER-LEFT: #eee 1px solid; COLOR: #ddd; PADDING-TOP: 2px;
  BORDER-BOTTOM: #eee 1px solid 
 } 
+.icon-dowland{
+display: block;
+background-image: url(${pageContext.request.contextPath}/images/dowland.png);
+background-position:center center;
+background-repeat:no-repeat
+
+}
 </style>
 <script type="text/javascript">
 window.onload=function(){
@@ -137,14 +144,14 @@ function onfousMessChange(){
     <thead>
       <tr class="text-c">
         <!--  <th width="25px"><input type="checkbox" name="" value=""></th> -->
-        <th width="1%">ID</th>
+        <th width="40px">ID</th>
         <th width="40xp">姓名</th>
         <th class="mess-hidden" width="40px">性别</th>
         <th class="mess-hidden" width="40px">年龄</th>
         <th class="mess-hidden" width="50px">主治医师</th>
         <th class="mess-hidden" width="30px">电话</th>
         <th class="mess-hidden" width="60px">诊断医师</th>
-        <!-- <th width="100px">操作</th> -->
+        <th width="40px">操作</th>
       </tr>
     </thead>
     <tbody>
@@ -153,7 +160,7 @@ function onfousMessChange(){
     <c:if test="${ not empty patient}">
       <tr class="text-c">
        <!--  <td width="25px"><input type="checkbox" value="1" name=""></td> -->
-        <td width="10px">${patient.pat_id}</td>
+        <td width="40px">${patient.pat_id}</td>
         <td width="50px"><a href="baogao.do?id=${patient.id}">${patient.name}</a></td>
        
         <td class="mess-hidden" width="40px">${patient.sex}</td>
@@ -162,17 +169,17 @@ function onfousMessChange(){
         <td class="mess-hidden" width="30px">${patient.telphone}</td>
         
         <td class="mess-hidden" width="60px">${patient.diag_Doctor}</td>
-       <!--  <td width="100px" class="f-14 user-manage"> <a title="编辑" href="javascript:;" onClick="user_edit('4','550','','编辑','user-add.html')" class="ml-5" style="text-decoration:none"><i class="icon-edit"></i></a> 
-         <a title="删除" href="javascript:;" onClick="user_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="icon-trash"></i></a></td>
-     	-->
+       	<td width="40px" class="f-14 user-manage"> <a title="下载" href="/test/file/dowland.do?id=${patient.id}" class="ml-5" style="text-decoration:none">下载</a> 
+        <!-- <a title="删除" href="javascript:;" onClick="user_del(this,'1')" class="ml-5" style="text-decoration:none">删除</a> --></td>
       </tr>
+      
       </c:if>
       </c:forEach>
     </tbody>
   </table>
   </div>
  	<div id="pagenum" class="digg" align="center" style="position: absolute;width: 95%;margin: 0;top: 600px"> 
-		<a id="previouspage" href="/test/patient/show.do?page=${requestScope.nowPage-1}"><span>&lt;</span></a>
+		<a id="previouspage" href="/test/patient/show.do?page=${requestScope.nowPage-1}"><span>&lt;</span></a> 
 		
 		
 		<c:forEach var="i" begin="1" end="${requestScope.pagenum}">

@@ -5,15 +5,15 @@ package com.service.impl;
 
 import java.util.List;
 
+
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.dao.province_Dao;
-import com.modle.Patient;
 import com.modle.Provinces;
-import com.pengyang.service.PatientService;
 import com.pengyang.service.ProvinceService;
 
 /**

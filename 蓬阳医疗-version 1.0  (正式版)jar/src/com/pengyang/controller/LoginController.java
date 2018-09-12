@@ -11,16 +11,19 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.modle.CommunityHospital;
+import com.modle.Office;
 import com.modle.Provinces;
 import com.modle.Superiorhospital;
 import com.modle.User;
 import com.modle.UserLogin;
+import com.pengyang.service.OfficeService;
 import com.pengyang.service.ProvinceService;
 import com.pengyang.service.UserLoginService;
 import com.pengyang.service.UserService;
@@ -46,14 +49,16 @@ public class LoginController {
 	private CommunityHospitalServiceImpl chs;
 	@Autowired
 	private ProvinceService ps;
+	@Autowired
+	private OfficeService os;
 
 	@RequestMapping("/doctor")
 	public String checkLoging(Login login, HttpSession session, HttpServletResponse response) {
 		// Admin admin = adminService.findAdminById(1);
 		try {
 			PrintWriter out = response.getWriter();
-			String password = login.getPassword().toString();
 			String username = login.getUsername().toString();
+			String password = login.getPassword().toString();
 			UserLogin user = uls.findOne(username);
 			// System.out.println(user);
 			if (user.getPassword().equals(password)) {
@@ -119,13 +124,25 @@ public class LoginController {
 	@RequestMapping("/regist")
 	public String regist(Regist regist, HttpServletRequest request, HttpSession session) {
 		User user = new User();
+		Office office = new Office();
+		office.setId(Integer.parseInt(regist.getOffice()));
+		try {
+			office.setName(os.findById(Integer.parseInt(regist.getOffice())).getName());
+		} catch (NumberFormatException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		user.setName(regist.getName());
-		user.setHospital(regist.getHospital());
+		user.setOffice(office);
 		user.setPassworld(regist.getPassword());
 		user.setUsername(regist.getUsername());
 		user.setHospital_sign(regist.getHospital_sign());
 		session.setAttribute("regist_message", regist);
-		System.out.println(regist);
+		session.setAttribute("office", office.getName());
+//		System.out.println(regist);
 
 		// 如果是上级医院，保存所属医院为上级医院
 		if (regist.getHospital_sign().equals("0") || regist.getHospital_sign() == "0") {
@@ -272,6 +289,34 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		
+		
+	}
+	@RequestMapping(value="findoffice")
+	public void findOffice(HttpServletResponse res,HttpSession session,HttpServletRequest req){
+		
+		try {
+			res.setCharacterEncoding("utf-8");
+			PrintWriter out = res.getWriter();
+			List<Office> officeList = new ArrayList<>();
+			officeList = os.findAll();
+			JSONArray json = new JSONArray();
+			for (Office office : officeList) {
+				JSONObject jo = new JSONObject();
+				jo.put("id", office.getId());
+				jo.put("name", office.getName());
+
+				json.add(jo);
+			}
+//			 System.out.println(provinceList);
+			 out.print(json);
+			// return provinceList;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

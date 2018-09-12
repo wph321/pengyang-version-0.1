@@ -146,8 +146,8 @@
 						<ul>
 							<li><a _href="page-home.html" href="javascript:void(0)">首页管理</a></li>
 							<li><a _href="page-flink.html" href="javascript:void(0)">友情链接</a></li>
-						</ul> 
-					</dd>
+						</ul>
+					</dd> 
 				</dl>
 				
 				<dl id="menu-order">
@@ -198,7 +198,7 @@
 								href="javascript:void(0)">权限管理</a></li>
 						</ul> 
 					</dd>
-				</dl>
+				</dl> 
 				
 				<dl id="menu-system">
 					<dt>

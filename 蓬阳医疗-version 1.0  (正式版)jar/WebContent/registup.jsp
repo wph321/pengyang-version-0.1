@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-<title>User Register</title>
+<title>上级医院注册页面</title>
 
 <!--[if lt IE 9]>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/html5.js"></script>
@@ -63,6 +63,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				$.ajax({
 					type : 'POST',
+					url : "login/findoffice.do",
+					data : null,
+					success : function(data) {
+						if (data.length > 0) {
+							$("#officeselect").empty();
+							$("#officeselect").append(
+									"<option>--请选择科室--</option>");
+							var job = jQuery.parseJSON(data);
+							for (var i = 0; i < job.length; i++) {
+								$("#officeselect").append(
+										"<option value='"+job[i].id
+														 +"'>"
+												+ job[i].name + "</option>");
+							}
+						}
+					},
+					dataType : "html"
+				});
+				
+				$.ajax({
+					type : 'POST',
 					url : "login/findprovince.do",
 					data : null,
 					success : function(data) {
@@ -71,7 +92,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$("#provinceselect").append(
 									"<option>--请选择省份--</option>");
 							var job = jQuery.parseJSON(data);
-							;
 							for (var i = 0; i < job.length; i++) {
 								$("#provinceselect").append(
 										"<option value='"+job[i].id
@@ -139,7 +159,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 	$("#rb").attr("disabled", true);
                 	alert("用户名已存在，请重新输入用户名");
                 	}else{
-                		alert("aaa");
                 		$("#rb").attr("disabled", false);
                 	}
                }  
@@ -223,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span></span>
 							</div>
 							<div class="styled-input">
-								<input id="pass2" type="password" name="password-again"
+								<input id="pass2" type="password" name="password_again"
 									required="" onblur="checkpass()"> <label> 再次输入密码<span id="pass2l"
 									style="color: red"> *</span></label> <span></span>
 							</div>
@@ -238,6 +257,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</select> <select id="shselect">
 											<option selected="selected">--请选择医院名--</option>
 									</select>
+									</span>
+								</div>
+							</div>
+							<div class="styled-input">
+								<label>科室<span id="shl" style="color: red"> *</span></label>
+								<div align="center">
+									<br /> <br /> <span style="float: left;"> <select
+										id="officeselect" name="office">
+											<option selected="selected" disabled="disabled">--请选择科室--</option>
+									</select> 
 									</span>
 								</div>
 							</div>

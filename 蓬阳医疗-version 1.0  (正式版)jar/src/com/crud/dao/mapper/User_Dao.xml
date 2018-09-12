@@ -10,8 +10,8 @@
     </resultMap>
     
     <insert id="addUser" parameterType="com.modle.User" >
-        insert into userlogin values (null,#{username},#{passworld},#{name},#{hospital},#{hospital_sign},#{sh.id},#{ch.id});    
+        insert into userlogin values (null,#{username},#{passworld},#{name},#{office.id},#{hospital_sign},#{sh.id},#{ch.id});    
     </insert>
    
     
-</mapper>
+</mapper> 

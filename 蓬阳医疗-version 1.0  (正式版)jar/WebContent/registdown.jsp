@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>下级医院注册页面</title>
 
 
 <!--[if lt IE 9]>
@@ -55,6 +55,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					$("#sh").val($(this).find("option:selected").text());
 				});
 
+				$.ajax({
+					type : 'POST',
+					url : "login/findoffice.do",
+					data : null,
+					success : function(data) {
+						if (data.length > 0) {
+							$("#officeselect").empty();
+							$("#officeselect").append(
+									"<option>--请选择科室--</option>");
+							var job = jQuery.parseJSON(data);
+							for (var i = 0; i < job.length; i++) {
+								$("#officeselect").append(
+										"<option value='"+job[i].id
+														 +"'>"
+												+ job[i].name + "</option>");
+							}
+						}
+					},
+					dataType : "html"
+				});
+				
 				$.ajax({
 					type : 'POST',
 					url : "login/findprovince.do",
@@ -216,7 +237,7 @@ function checkpass(){
 								<span></span>
 							</div>
 							<div class="styled-input">
-								<input id="pass2" type="password" name="password" required="" onblur="checkpass()">
+								<input id="pass2" type="password" name="password_again" required="" onblur="checkpass()">
 								<label> 再次输入密码<span id="pass2l" style="color: red">
 										*</span></label> <span></span>
 							</div>
@@ -243,6 +264,16 @@ function checkpass(){
 									</span>
 								</div>
 								<label>上级医院名<span style="color: red"> *</scan></label>
+							</div>
+							<div class="styled-input">
+								<label>科室<span id="shl" style="color: red"> *</span></label>
+								<div align="center">
+									<br /> <br /> <span style="float: left;"> <select
+										id="officeselect" name="office">
+											<option selected="selected" disabled="disabled">--请选择科室--</option>
+									</select> 
+									</span>
+								</div>
 							</div>
 
 							<div class="clear"></div>

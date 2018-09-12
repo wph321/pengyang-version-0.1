@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crud.dao.Office_Dao">
+    <sql id="cols">
+         id,name
+    </sql>
+    
+    <resultMap type="com.modle.Office" id="office">
+    	<result property="id" column="id"/>
+    	<result property="name" column="name"/>
+    </resultMap>
+    
+    <select id="findAll" resultMap="office">
+    	select <include refid="cols" /> from office;
+    </select>
+    
+    <select id="findById" parameterType="int" resultType="com.modle.Office">
+    	select <include refid="cols" /> from office where id=#{id};
+    </select>
+   <!--  
+    <select id="findCount" parameterType="String" resultType="int">
+    	select count(*) from userlogin where username=#{username};  
+    </select>
+    -->
+    <insert id="add" parameterType="com.modle.Office">
+    	insert into office values(#{id},#{name});
+    </insert>
+    
+    <update id="update" parameterType="com.modle.Office">
+    	update office set name=#{name} where id=#{id};
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	delete from office where id=#{id};
+    </delete>
+    
+</mapper>

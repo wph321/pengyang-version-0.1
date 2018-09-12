@@ -33,6 +33,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;姓名: ${sessionScope.regist_message.name}<br/><br/><br/>
 		&nbsp;&nbsp;用户名: ${sessionScope.regist_message.username}<br/><br/><br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;密码: ${sessionScope.regist_message.password}<br/><br/><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;科室: ${sessionScope.office}<br/><br/><br/>
 		所属医院: ${sessionScope.regist_message.hospital}<br/><br/><br/>
 		<c:if test="${sessionScope.regist_message.hospital_sign == 1}">  
 			上级医院: ${sessionScope.regist_message.superiorhospital}
